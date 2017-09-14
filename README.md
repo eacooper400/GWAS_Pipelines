@@ -19,8 +19,8 @@ If you do not have it already, download and install
 If you are starting with a VCF file, then the command to convert it
 into bed/bim/fam format will look like this:
 
-```
-plink --vcf "yourFilename" --make-bed --allow-extra-chr --out "newFilename"
+```bash
+plink --vcf <yourFilename> --make-bed --allow-extra-chr --out <newFilename>
 ```
 ###### HapMap Files
 If you are starting with a HapMap file, such as those created by
@@ -29,8 +29,10 @@ couple of extra steps.
 
 First, load your HapMap file into the TASSEL alignment viewer.  Then,
 use the export option to write your files out into Plink format.
-<img src=images/tassel_menu.png/>
-<img src=images/tassel_saveAsplink.png/>
+
+<img src=images/tassel_menu.png width=3000 height=200/>
+
+<img src=images/tassel_saveAsplink.png width=300 height=200/>
 
 This will create 2 files: a `.ped` and a `.map` file.  Both files
 should have the same prefix.  Now, you can use these files in Plink
