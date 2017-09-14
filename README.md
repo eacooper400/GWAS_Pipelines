@@ -30,9 +30,9 @@ couple of extra steps.
 First, load your HapMap file into the TASSEL alignment viewer.  Then,
 use the export option to write your files out into Plink format.
 
-<img src=images/tassel_menu.png width=300 height=200/>
+<img src=images/tassel_menu.png width=400 height=300/>
 
-<img src=images/tassel_saveAsplink.png width=300 height=200/>
+<img src=images/tassel_saveAsplink.png width=400 height=300/>
 
 This will create 2 files: a `.ped` and a `.map` file.  Both files
 should have the same prefix.  Now, you can use these files in Plink
@@ -54,7 +54,7 @@ the 6th column will contain all "-9" values, which stands for missing
 data.  Insert your phenotypes starting at Column 6, and adding as many
 additional columns as you want.
 
-<img src=images/famFile.png width=300 height=200/>
+<img src=images/famFile.png width=400 height=300/>
 
 Save the edited file as a tab-delimited txt file.  You can rename this
 back to a .fam file from the command line: `mv file.txt file.fam`
