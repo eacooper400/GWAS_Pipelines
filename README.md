@@ -30,7 +30,7 @@ couple of extra steps.
 First, load your HapMap file into the TASSEL alignment viewer.  Then,
 use the export option to write your files out into Plink format.
 
-<img src=images/tassel_menu.png width=3000 height=200/>
+<img src=images/tassel_menu.png width=300 height=200/>
 
 <img src=images/tassel_saveAsplink.png width=300 height=200/>
 
@@ -38,8 +38,8 @@ This will create 2 files: a `.ped` and a `.map` file.  Both files
 should have the same prefix.  Now, you can use these files in Plink
 with the `make-bed` command:
 
-```
-plink --file "plink-file-prefix" --make-bed --allow-extra-chr --out "newFilename"
+```bash
+plink --file <plink-file-prefix> --make-bed --allow-extra-chr --out <newFilename>
 ```
 
 #### Adding Phenotype Data
@@ -54,7 +54,7 @@ the 6th column will contain all "-9" values, which stands for missing
 data.  Insert your phenotypes starting at Column 6, and adding as many
 additional columns as you want.
 
-<img src=images/famFile.png/>
+<img src=images/famFile.png width=300 height=200/>
 
 Save the edited file as a tab-delimited txt file.  You can rename this
 back to a .fam file from the command line: `mv file.txt file.fam`
@@ -85,27 +85,29 @@ GEMMA command line.
     equal to the number of samples in your file (because GEMMA
     requires this).  So, if I have a sample of 100 individuals:
 
-```
-plink --pca 100 --file "your-plink-prefix" --out "output-pca"
+```bash
+plink --pca 100 --file <your-plink-prefix> --out <output-pca>
 ```
 
 2.  **Getting rid of the first 2 columns with the command line.**
 Plink will create 2 files: a .eigenvec and a .eigenval file.  You will
 need both, but the .eigenvec file needs to be edited a bit.
-```
-awk '{$1="";print}' "output-pca.eigenvec" | awk '{$1="";print}' >>"new.eigenvec"
+
+```bash
+awk '{$1="";print}' output-pca.eigenvec | awk '{$1="";print}' >>new.eigenvec
 ```
 
 3.  **Running GEMMA:**
-```
-gemma -bfile "your-file-prefix" -n 1 -d "output-pca.eigenval" -u "new.eigenvec" -lmm 4 -o "your-output-name"
+```bash
+gemma -bfile <your-file-prefix> -n 1 -d <output-pca.eigenval> -u <new.eigenvec> -lmm 4 -o <your-output-name>
 ```
 
 #### Running the Bayesian Model
 The command line for running a single iteration of the BSLMM (the
 Bayesian Sparse linear mixed model):
-```
-gemma -bfile "your-file-prefix" -bslmm 1 -n 1 -w 5000000 -s 20000000 -o "your-output-name"
+
+```bash
+gemma -bfile <your-file-prefix> -bslmm 1 -n 1 -w 5000000 -s 20000000 -o <your-output-name>
 ```
 
 The `n 1` flag tells the program to look at the first phenotype in the
